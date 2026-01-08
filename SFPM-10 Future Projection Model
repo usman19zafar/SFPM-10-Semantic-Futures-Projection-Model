@@ -1,0 +1,147 @@
+SFPM‑10 — Semantic Futures Projection Model
+Sub‑Engine Architecture (Plain‑Text Specification)
+=========================================================
+SFPM‑10 is decomposed into five sub‑engines, each forecasting one semantic dimension:
+
+SFPM‑S10 — Semantic Intensity Futures
+
+SFPM‑T10 — Tier Futures
+
+SFPM‑W10 — Influence Weight Futures
+
+SFPM‑Z10 — Drift & Subzone Futures
+
+SFPM‑Q10 — Qualified Interpretation Futures
+
+Together, they produce the full future semantic state.
+
+=========================================================
+1. SFPM‑S10 — Semantic Intensity Futures Engine
+=========================================================
+Purpose
+Predicts how the semantic intensity score will evolve over time.
+
+Core Formula
+Code
+ds_i/dt = -lambda_i * s_i(t) + beta_i(t)
+Discrete Projection
+Code
+s_i_future = s_i_now * exp(-lambda_i * dt) + reinforcement_term
+Inputs
+Code
+s_i(t)
+lambda_i
+beta_i(t)
+context
+Output
+Code
+s_i(t + dt)
+=========================================================
+2. SFPM‑T10 — Tier Futures Engine
+=========================================================
+Purpose
+Predicts future tier transitions using a discrete probability model.
+
+Tier Transition Matrix
+Code
+P_i(t) = matrix of p_jk(t)
+p_jk(t) = probability of tier j -> tier k
+Update Rule
+Code
+tier_i(t + dt) = sample_from( P_i(t) )
+Inputs
+Code
+current tier
+role
+drift level
+context
+Output
+Code
+tier_i(t + dt)
+=========================================================
+3. SFPM‑W10 — Influence Weight Futures Engine
+=========================================================
+Purpose
+Forecasts how influence weights shift as meaning evolves.
+
+Update Rule
+Code
+w_i(t + dt) = f( w_i(t), s_i(t + dt), tier_i(t + dt), context )
+Normalization
+Code
+Sum over all i of w_i(t + dt) = 1
+Inputs
+Code
+w_i(t)
+s_i(t + dt)
+tier_i(t + dt)
+context
+Output
+Code
+w_i(t + dt)
+=========================================================
+4. SFPM‑Z10 — Drift & Subzone Futures Engine
+=========================================================
+Purpose
+Predicts future drift zones and fading states.
+
+Subzone Mapping
+Code
+if s_i >= 80:      z_i = E1
+else if s_i >= 60: z_i = EC1
+else if s_i >= 40: z_i = C2
+else if s_i >= 20: z_i = CN1
+else:              z_i = N1
+Inputs
+Code
+s_i(t + dt)
+drift coefficient
+context
+Output
+Code
+z_i(t + dt)
+=========================================================
+5. SFPM‑Q10 — Qualified Interpretation Futures Engine
+=========================================================
+Purpose
+Predicts how the qualified interpretation level will evolve.
+
+Update Rule
+Code
+q_i(t + dt) = QFIM10( s_i(t + dt), tier_i(t + dt), z_i(t + dt) )
+Interpretation Levels
+Code
+Critical
+High
+Moderate
+Low
+Minimal
+Inputs
+Code
+s_i(t + dt)
+tier_i(t + dt)
+z_i(t + dt)
+Output
+Code
+q_i(t + dt)
+=========================================================
+6. SFPM‑10 Master Operator
+=========================================================
+The full semantic future is produced by running all sub‑engines in sequence.
+
+State Vector
+Code
+x_i(t) = ( s_i(t), t_i(t), w_i(t), z_i(t), q_i(t) )
+Full Update
+Code
+1. s_i(t + dt) = SFPM-S10(...)
+2. t_i(t + dt) = SFPM-T10(...)
+3. w_i(t + dt) = SFPM-W10(...)
+4. z_i(t + dt) = SFPM-Z10(...)
+5. q_i(t + dt) = SFPM-Q10(...)
+Final Output
+Code
+x_i(t + dt)
+System Update
+Code
+X(t + dt) = SFPM10( X(t), context(t to t+dt) )
