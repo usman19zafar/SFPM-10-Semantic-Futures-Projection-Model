@@ -7,7 +7,8 @@ SFPM‑10 extends DAIS‑10 by forecasting future semantic states, enabling syst
 Together, they form a unified architecture for present‑to‑future semantic intelligence.
 
 1. High‑Level Architecture
-mermaid
+
+```mermaid
 flowchart TD
 
     RAW["Raw Data / Sensors / Attributes"]
@@ -55,6 +56,8 @@ flowchart TD
 
     FUSION --> PLANNER --> CONTROL
     CONTROL --> AMD10
+```
+
 2. DAIS‑10: Present Semantic Engine
 DAIS‑10 transforms raw data into a structured semantic state.
 
@@ -70,8 +73,10 @@ flowchart LR
     QFIM10["QFIM‑10\nQualified Level"]
     AMD10["AMD‑10\nDiagnostics"]
 
+```mermaid
     RAW --> SIS10 --> MCM10 --> TIER10 --> SICM10 --> DIFS10 --> QFIM10 --> AMD10
     SICM10 --> SIF10
+```
 DAIS‑10 Output (per attribute)
 Code
 x_i(t) = ( s_i(t), t_i(t), w_i(t), z_i(t), q_i(t) )
@@ -90,7 +95,7 @@ q_i(t) = qualified interpretation
 3. SFPM‑10: Semantic Futures Engine
 SFPM‑10 forecasts how meaning will evolve over time.
 
-mermaid
+```mermaid
 flowchart LR
 
     PRESENT["Present Semantic State\nx_i(t)"]
@@ -110,6 +115,7 @@ flowchart LR
     PRESENT --> W10 --> FUTURE
     PRESENT --> Z10 --> FUTURE
     PRESENT --> Q10 --> FUTURE
+```
 SFPM‑10 Output (per attribute)
 Code
 x_i(t + dt) = ( s_i(t+dt), t_i(t+dt), w_i(t+dt), z_i(t+dt), q_i(t+dt) )
