@@ -15,6 +15,7 @@ their risk of failure
 
 It sits on top of SIS‑10, SIF‑10, MCM‑10, TIER‑10, SICM‑10, DIFS‑10, QFIM‑10, AMD‑10.
 
+For better accuracy of formulas, pdf is included.
 1.2. State definition
 For each attribute 
 𝑎
