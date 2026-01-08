@@ -7,36 +7,44 @@ x_i(t) = ( s_i(t),  t_i(t),  w_i(t),  z_i(t),  q_i(t) )
 Where:
 
 Code
+
 s_i(t) = semantic intensity score (0 to 100)
 t_i(t) = tier (E, EC, C, CN, N)
 w_i(t) = influence weight (0 to 1)
 z_i(t) = drift/fading subzone
 q_i(t) = qualified interpretation level
 2. Intensity Evolution (Drift + Reinforcement)
+
 Code
 ds_i/dt = -lambda_i * s_i(t) + beta_i(t)
+
 Where:
 
 Code
+
 lambda_i = drift coefficient
 beta_i(t) = reinforcement from context
 Discrete projection over delta_t:
 
 Code
+
 s_i(t + dt) = s_i(t) * exp(-lambda_i * dt) + Integral(beta_i(tau) * exp(-lambda_i * (t + dt - tau)) dtau)
 If you want the simplified version:
 
 Code
+
 s_future = s_now * exp(-lambda * dt) + reinforcement_term
 3. Tier Evolution (Discrete Transitions)
 Tier transitions use a probability matrix:
 
 Code
+
 P_i(t) = matrix of p_jk(t)
 p_jk(t) = probability of tier j -> tier k
 Tier update:
 
 Code
+
 t_i(t + dt) = sample_from( P_i(t) )
 4. Influence Weight Evolution
 Code
