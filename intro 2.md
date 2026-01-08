@@ -73,10 +73,10 @@ flowchart LR
     QFIM10["QFIM‑10\nQualified Level"]
     AMD10["AMD‑10\nDiagnostics"]
 
-```mermaid
+
     RAW --> SIS10 --> MCM10 --> TIER10 --> SICM10 --> DIFS10 --> QFIM10 --> AMD10
     SICM10 --> SIF10
-```
+
 DAIS‑10 Output (per attribute)
 Code
 x_i(t) = ( s_i(t), t_i(t), w_i(t), z_i(t), q_i(t) )
@@ -116,11 +116,14 @@ flowchart LR
     PRESENT --> Z10 --> FUTURE
     PRESENT --> Q10 --> FUTURE
 ```
+
 SFPM‑10 Output (per attribute)
 Code
 x_i(t + dt) = ( s_i(t+dt), t_i(t+dt), w_i(t+dt), z_i(t+dt), q_i(t+dt) )
+
 4. Combined Semantic State Flow
-mermaid
+
+```mermaid
 sequenceDiagram
     participant Raw as Raw Data
     participant DAIS as DAIS‑10
@@ -134,7 +137,10 @@ sequenceDiagram
     SFPM->>Plan: Future semantic state x_i(t + dt)
     DAIS->>Plan: Present semantic state x_i(t)
     Plan->>Plan: Risk‑aware, drift‑aware decisions
+```
+
 5. Repository Structure
+```mermaid
 Code
 /dais10/
     sis10/
@@ -162,6 +168,7 @@ Code
     robotics/
     semantic-futures/
     data-governance/
+```
 6. Key Features
 Present Semantics (DAIS‑10)
 Role classification
