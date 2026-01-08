@@ -140,8 +140,6 @@ sequenceDiagram
 ```
 
 5. Repository Structure
-```mermaid
-Code
 /dais10/
     sis10/
     sif10/
@@ -168,7 +166,6 @@ Code
     robotics/
     semantic-futures/
     data-governance/
-```
 6. Key Features
 Present Semantics (DAIS‑10)
 Role classification
