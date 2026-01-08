@@ -74,20 +74,18 @@ semantic stability management
 
 governance‑aligned planning
 
-```mermaid
-Dataflow
-Raw data enters DAIS‑10  
+Raw data enters DAIS‑10
 → interpreted, classified, tiered, scored, weighted, drift‑mapped, qualified, diagnosed.
 
-DAIS‑10 outputs present semantic state  
+DAIS‑10 outputs present semantic state
 → x_i(t) for each attribute.
 
-SFPM‑10 receives present state + context  
+SFPM‑10 receives present state + context
 → forecasts semantic futures.
 
-SFPM‑10 outputs future semantic state  
+SFPM‑10 outputs future semantic state
 → x_i(t + dt).
-```
+
 
 Planning & control use both states  
 → enabling semantic‑aware, drift‑aware, risk‑aware decisions.
