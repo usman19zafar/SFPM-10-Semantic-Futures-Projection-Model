@@ -78,7 +78,7 @@ flowchart LR
     SICM10 --> SIF10
 
 DAIS‑10 Output (per attribute)
-Code
+```Code
 x_i(t) = ( s_i(t), t_i(t), w_i(t), z_i(t), q_i(t) )
 Where:
 
@@ -91,7 +91,7 @@ w_i(t) = influence weight
 z_i(t) = drift/fading subzone
 
 q_i(t) = qualified interpretation
-
+```
 3. SFPM‑10: Semantic Futures Engine
 SFPM‑10 forecasts how meaning will evolve over time.
 
@@ -118,9 +118,9 @@ flowchart LR
 ```
 
 SFPM‑10 Output (per attribute)
-Code
+```Code
 x_i(t + dt) = ( s_i(t+dt), t_i(t+dt), w_i(t+dt), z_i(t+dt), q_i(t+dt) )
-
+```
 4. Combined Semantic State Flow
 
 ```mermaid
