@@ -140,6 +140,7 @@ sequenceDiagram
 ```
 
 5. Repository Structure
+```code
 /dais10/
     sis10/
     sif10/
@@ -161,7 +162,7 @@ sequenceDiagram
     diagrams/
     formulas/
     architecture/
-
+```
 /examples/
     robotics/
     semantic-futures/
