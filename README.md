@@ -61,7 +61,7 @@ flowchart TD
 2. DAIS‑10: Present Semantic Engine
 DAIS‑10 transforms raw data into a structured semantic state.
 
-mermaid
+```mermaid
 flowchart LR
     RAW["Raw Attribute"]
     SIS10["SIS‑10\nInterpretation"]
@@ -72,11 +72,12 @@ flowchart LR
     DIFS10["DIFS‑10\nDrift/Subzone"]
     QFIM10["QFIM‑10\nQualified Level"]
     AMD10["AMD‑10\nDiagnostics"]
+```
 
-
+```code
     RAW --> SIS10 --> MCM10 --> TIER10 --> SICM10 --> DIFS10 --> QFIM10 --> AMD10
     SICM10 --> SIF10
-
+```
 DAIS‑10 Output (per attribute)
 ```Code
 x_i(t) = ( s_i(t), t_i(t), w_i(t), z_i(t), q_i(t) )
